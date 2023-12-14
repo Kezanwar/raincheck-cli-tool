@@ -41,17 +41,13 @@ func main() {
 
 	URL := fmt.Sprintf("http://api.weatherapi.com/v1/current.json?key=%s&q=London&aqi=no", API_KEY)
 
-	res, httpErr := http.Get(URL)
+	response, httpErr := http.Get(URL)
 
-	if httpErr != nil {
+	if httpErr != nil || response.StatusCode != 200 {
 		print_exit("Weather API not available")
 	}
 
-	if res.StatusCode != 200 {
-		print_exit("Weather API not available")
-	}
-
-	json := resp_to_json(*res)
+	json := resp_to_json(*response)
 
 	println(json)
 }
