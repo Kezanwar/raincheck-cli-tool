@@ -1,0 +1,1 @@
+go build -ldflags "-X main.BUILD_API_KEY=$1";
