@@ -108,16 +108,12 @@ func print_hours(hours []Hour) {
 
 		var temp = handle_trailing_numbers(hour.TempC)
 
-		var chane_of_rain = handle_trailing_numbers(hour.ChanceOfRain)
-
-		if i == 23 {
-			chane_of_rain = "100"
-		}
+		var chance_of_rain = handle_trailing_numbers(hour.ChanceOfRain)
 
 		spaceDegree := get_spacing(maxDegree - len(temp))
-		spaceChance := get_spacing(maxChance - len(chane_of_rain))
+		spaceChance := get_spacing(maxChance - len(chance_of_rain))
 
-		message := fmt.Sprintf("%s             %s°  %s               %s%% %s           %s\n", date.Format("15:04"), temp, spaceDegree, chane_of_rain, spaceChance, hour.Condition.Text)
+		message := fmt.Sprintf("%s             %s°  %s               %s%% %s           %s\n", date.Format("15:04"), temp, spaceDegree, chance_of_rain, spaceChance, hour.Condition.Text)
 
 		if hour.ChanceOfRain > 40 {
 			color.Red(message)
